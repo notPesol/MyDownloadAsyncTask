@@ -116,13 +116,12 @@ public class MainActivity extends AppCompatActivity {
 
                     outputStream.flush();
                     outputStream.close();
+
+                    bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+
+                }else {
+                    bitmap = BitmapFactory.decodeStream(inputStream);
                 }
-
-                url = new URL((String)objects[0]);
-                connection = (HttpURLConnection) url.openConnection();
-                inputStream = connection.getInputStream();
-
-                bitmap = BitmapFactory.decodeStream(inputStream);
 
                 inputStream.close();
                 connection.disconnect();
@@ -130,8 +129,6 @@ public class MainActivity extends AppCompatActivity {
             } catch (IOException e) {
                 result = e.getMessage();
             }
-
-
 
             result = "Task complete.";
 
